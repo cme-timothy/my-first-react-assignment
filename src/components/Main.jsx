@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import uuid from "react-native-uuid";
+import { nanoid } from "nanoid";
 import InputBox from "./InputBox";
 import ItemsList from "./ItemsList";
 import "./Main.css";
@@ -12,8 +12,9 @@ function Main() {
       return [
         ...prevItems,
         {
-          id: uuid.v4(),
+          id: nanoid(),
           title: title,
+          checkmarked: false,
         },
       ];
     });

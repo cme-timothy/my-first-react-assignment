@@ -1,5 +1,5 @@
 import React from "react";
-import uuid from "react-native-uuid";
+import { nanoid } from "nanoid";
 import Items from "./Items";
 
 function ItemsList(props) {
@@ -7,7 +7,7 @@ function ItemsList(props) {
     <div>
       {props.addItem.map((title) => {
         return (
-          <Items key={uuid.v4()} data={title} removeItem={props.removeItem} />
+          <Items key={nanoid()} data={title} removeItem={props.removeItem} />
         );
       })}
     </div>

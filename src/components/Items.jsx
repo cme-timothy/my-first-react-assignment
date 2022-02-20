@@ -5,15 +5,20 @@ import checkmark from "../assets/checkmark.svg";
 import empty from "../assets/empty.svg";
 
 function Items(props) {
-  const [active, setActive] = useState("false");
+  const [active, setActive] = useState(props.data.checkmarked);
+
+  function toggleCheckmark() {
+    setActive(!active);
+    if (active === true) {
+      props.data.checkmarked = false;
+    } else if (active === false) {
+      props.data.checkmarked = true;
+    }
+  }
 
   function handleRemoveItem() {
     const id = props.data.id;
     props.removeItem(id);
-  }
-
-  function toggleCheckmark() {
-    setActive(!active);
   }
 
   return (
@@ -22,7 +27,7 @@ function Items(props) {
         <img
           onClick={toggleCheckmark}
           className={"checkmarkPic"}
-          src={active ? `${empty}` : `${checkmark}`}
+          src={active ? `${checkmark}` : `${empty}`}
           alt=""
         />
       </button>
