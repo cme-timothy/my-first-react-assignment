@@ -19,6 +19,7 @@ function Items(props) {
   function handleRemoveItem() {
     const id = props.data.id;
     props.removeItem(id);
+    setActive(!active);
   }
 
   return (
